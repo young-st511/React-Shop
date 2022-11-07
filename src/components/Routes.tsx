@@ -55,6 +55,8 @@ const GlobalStyle = createGlobalStyle`
   * {
     font-family: SUIT;
     font-weight: 500;
+
+    transition: all 0.3s ease-in-out;
     a, button {
       color: inherit;
       text-decoration: none;

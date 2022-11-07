@@ -28,39 +28,42 @@ function Navigation() {
   };
 
   return (
-    <HeaderWrapper>
-      <h1>
-        <Link to={"/"}>React Shop</Link>
-      </h1>
-      <Nav>
-        <NavLink to={"fasion"}>패션</NavLink>
-        <NavLink to={"accesory"}>악세서리</NavLink>
-        <NavLink to={"digital"}>디지털</NavLink>
-      </Nav>
+    <>
+      <HeaderWrapper>
+        <h1>
+          <Link to={"/"}>React Shop</Link>
+        </h1>
+        <Nav>
+          <NavLink to={"fasion"}>패션</NavLink>
+          <NavLink to={"accesory"}>악세서리</NavLink>
+          <NavLink to={"digital"}>디지털</NavLink>
+        </Nav>
 
-      <HeaderRight>
-        <button
-          className="theme-button"
-          aria-hidden={"true"}
-          onClick={handleThemeClick}>
-          {theme === "light" ? (
-            <img src={sunImg} alt="라이트 모드" />
-          ) : (
-            <img src={moonImg} alt="다크 모드" />
-          )}
-        </button>
-        <input
-          type={"search"}
-          placeholder="검색"
-          id="검색창"
-          value={search}
-          onChange={handleChangeSearch}
-        />
-        <Link className="cart-button" to={"cart"}>
-          <img src={cartImg} alt="장바구니" />
-        </Link>
-      </HeaderRight>
-    </HeaderWrapper>
+        <HeaderRight>
+          <button
+            className="theme-button"
+            aria-hidden={"true"}
+            onClick={handleThemeClick}>
+            {theme === "light" ? (
+              <img src={sunImg} alt="라이트 모드" />
+            ) : (
+              <img src={moonImg} alt="다크 모드" />
+            )}
+          </button>
+          <input
+            type={"search"}
+            placeholder="검색"
+            id="검색창"
+            value={search}
+            onChange={handleChangeSearch}
+          />
+          <Link className="cart-button" to={"cart"}>
+            <img src={cartImg} alt="장바구니" />
+          </Link>
+        </HeaderRight>
+      </HeaderWrapper>
+      <BlankBlock />
+    </>
   );
 }
 
@@ -68,10 +71,19 @@ export default Navigation;
 
 const HeaderWrapper = styled.header`
   display: flex;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  width: 100%;
   height: 48px;
   padding: 8px;
+
+  align-items: center;
+
+  background-color: #fff;
+
+  z-index: 9999;
 
   h1 {
     flex: none;
@@ -111,4 +123,10 @@ const HeaderRight = styled.div`
       height: 24px;
     }
   }
+`;
+
+const BlankBlock = styled.div`
+  width: 100%;
+  height: 48px;
+  background-color: #fff;
 `;
