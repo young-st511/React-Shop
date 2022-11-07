@@ -1,6 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import Navigation from "./Navigation";
+import Accessory from "../routes/Accessory";
+import Cart from "../routes/Cart";
+import Digital from "../routes/Digital";
+import Fashion from "../routes/Fashion";
+import Product from "../routes/Product";
+import Root from "../routes/Root";
 
 function AppRouter() {
   const router = createBrowserRouter([
@@ -9,23 +16,23 @@ function AppRouter() {
       element: <Root />,
       children: [
         {
-          path: "auth",
+          path: "fashion",
           element: <Fashion />,
         },
         {
-          path: "signIn",
+          path: "accessory",
           element: <Accessory />,
         },
         {
-          path: "assets",
+          path: "digital",
           element: <Digital />,
         },
         {
-          path: "books",
+          path: "product",
           element: <Product />,
         },
         {
-          path: "remittance",
+          path: "cart",
           element: <Cart />,
         },
       ],
@@ -35,6 +42,7 @@ function AppRouter() {
   return (
     <div className="App">
       <GlobalStyle />
+      <Navigation />
       <RouterProvider router={router} />
     </div>
   );
