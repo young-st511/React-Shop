@@ -5,15 +5,26 @@ import styled from "styled-components";
 import cartImg from "../assets/cart.svg";
 import sunImg from "../assets/sun.svg";
 import moonImg from "../assets/moon.svg";
+import { useRecoilState } from "recoil";
+import { themeState } from "../recoil_state";
 
 function Navigation() {
   const [search, setSearch] = useState("");
+  const [theme, setTheme] = useRecoilState(themeState);
 
   const handleChangeSearch = (e: React.FormEvent<HTMLInputElement>) => {
     const {
       currentTarget: { value },
     } = e;
     setSearch(value);
+  };
+
+  const handleThemeClick = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   };
 
   return (
@@ -28,9 +39,15 @@ function Navigation() {
       </Nav>
 
       <HeaderRight>
-        <button className="theme-button">
-          <img src={sunImg} />
-          <img src={moonImg} />
+        <button
+          className="theme-button"
+          aria-hidden={"true"}
+          onClick={handleThemeClick}>
+          {theme === "light" ? (
+            <img src={sunImg} alt="라이트 모드" />
+          ) : (
+            <img src={moonImg} alt="다크 모드" />
+          )}
         </button>
         <input
           type={"search"}
@@ -40,7 +57,7 @@ function Navigation() {
           onChange={handleChangeSearch}
         />
         <Link className="cart-button" to={"cart"}>
-          <img src={cartImg} />
+          <img src={cartImg} alt="장바구니" />
         </Link>
       </HeaderRight>
     </HeaderWrapper>
@@ -50,18 +67,48 @@ function Navigation() {
 export default Navigation;
 
 const HeaderWrapper = styled.header`
+  display: flex;
+  align-items: center;
+
+  height: 48px;
+  padding: 8px;
+
   h1 {
-    margin: 0 8px;
+    flex: none;
+    margin: 0 10px;
     font-size: 18px;
-    font-weight: 70;
+    font-weight: 700;
   }
 `;
 
 const Nav = styled.nav`
+  flex: 1 1 0%;
   font-size: 14px;
   font-weight: 600;
+
+  a {
+    height: 2rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    min-height: 2rem;
+    font-size: 0.875rem;
+  }
 `;
 
 const HeaderRight = styled.div`
   padding: 0 8px;
+
+  .theme-button {
+    img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .cart-button {
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
 `;

@@ -1,4 +1,4 @@
-export type CartType = CartItemType[];
+export type CartType = CartItemType[] | { [key: string]: never };
 
 interface CartItemType {
   id: string;

@@ -1,5 +1,5 @@
 import { atom, AtomEffect, selector } from "recoil";
-import { CartType } from "./types/cartType";
+import { CartType } from "./types/CartType";
 
 const localSyncEffect: <T>(key: string) => AtomEffect<T> =
   (key) =>
@@ -20,9 +20,9 @@ const localSyncEffect: <T>(key: string) => AtomEffect<T> =
     });
   };
 
-const cartListState = atom({
+const cartListState = atom<CartType>({
   key: "cartListState",
-  default: JSON.parse(localStorage.getItem("localCartList") ?? "") ?? {},
+  default: {},
   effects: [localSyncEffect<CartType>("cartListState")],
 });
 
@@ -31,13 +31,13 @@ const cartListNumState = selector({
   get: ({ get }) => {
     const cartList = get(cartListState);
 
-    return Object.keys(cartList).length;
+    return cartList.reduce((sum, item) => item.number + sum, 0);
   },
 });
 
-const themeState = atom({
+const themeState = atom<"light" | "dark">({
   key: "themeState",
-  default: {},
+  default: "light",
 });
 
 export { cartListState, cartListNumState, themeState };
