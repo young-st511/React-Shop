@@ -8,13 +8,17 @@ import StyledCarouselSection from "./CarouselSection.style";
 function CarouselSection() {
   return (
     <StyledCarouselSection>
-      <Carousel showThumbs={false} autoPlay={false} interval={2000}>
+      <Carousel
+        showThumbs={false}
+        infiniteLoop={true}
+        autoPlay={true}
+        interval={3000}>
         <div className="carousel-item">
           <img src={fashionImg} alt="Fashion" />
           <div className="carousel-tag">
             <h2>물빠진 청바지!</h2>
             <p>이제 막 도착한 패션 청바지를 구경해보세요.</p>
-            <Link to={"fasion"} className="carousel-button">
+            <Link to={"fashion"} className="carousel-button">
               {"바로가기 >"}
             </Link>
           </div>
@@ -34,7 +38,7 @@ function CarouselSection() {
           <div className="carousel-tag">
             <h2>신선한 식품!</h2>
             <p>농장 직배송으로 더욱 신선한 식료품을 만나보세요.</p>
-            <Link to={"grocery"} className="carousel-button">
+            <Link to={"accessory"} className="carousel-button">
               {"바로가기 >"}
             </Link>
           </div>

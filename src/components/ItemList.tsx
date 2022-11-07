@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { CategoryType } from "../../types/categoryType";
-import { ItemType } from "../../types/itemType";
-import Item from "../Item";
+import { CategoryType } from "../types/categoryType";
+import { ItemType } from "../types/itemType";
+import getListName from "../utils/getListName";
+import Item from "./Item";
 
-type HomeItemListProps = { category: CategoryType };
+type ItemListProps = { category: CategoryType; limit?: number };
 
-const fetch = async (category: CategoryType) => {
+const fetch = async (category: CategoryType, limit: number | undefined) => {
   try {
     const items = await axios.get<ItemType[]>(
-      `https://fakestoreapi.com/products/category/${category}?limit=4`
+      `https://fakestoreapi.com/products/category/${category}${
+        limit ? `?limit=${limit}` : ""
+      }`
     );
     return items.data;
   } catch (error) {
@@ -18,27 +21,11 @@ const fetch = async (category: CategoryType) => {
   }
 };
 
-const getListName = (category: CategoryType) => {
-  switch (category) {
-    case "men's clothing":
-      return "남성 의류";
-    case "women's clothing":
-      return "여성 의류";
-    case "electronics":
-      return "디지털";
-    case "jewelery":
-      return "악세서리";
-
-    default:
-      return "error";
-  }
-};
-
-function HomeItemList({ category }: HomeItemListProps) {
+function ItemList({ category, limit }: ItemListProps) {
   const [items, setItems] = useState<ItemType[]>([]);
   useEffect(() => {
-    fetch(category).then((res) => setItems(res || []));
-  }, [category]);
+    fetch(category, limit).then((res) => setItems(res || []));
+  }, [category, limit]);
 
   return (
     <StyledHomeItemList>
@@ -52,11 +39,12 @@ function HomeItemList({ category }: HomeItemListProps) {
   );
 }
 
-export default HomeItemList;
+export default ItemList;
 
 const StyledHomeItemList = styled.section`
   width: 100%;
-  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
   h2 {
     width: 200px;
     margin: 70px auto;

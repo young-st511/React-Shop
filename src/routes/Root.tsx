@@ -1,23 +1,19 @@
+import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import CarouselSection from "../components/Home/CarouselSection";
-import HomeItemList from "../components/Home/HomeItemList";
+import Home from "../components/Home/Home";
 import Navigation from "../components/Navigation";
 
 function Root() {
+  const location = useLocation();
+
   return (
     <StyledRoot>
       <Navigation />
-      <CarouselSection />
-      <HomeItemList category={"men's clothing"} />
-      <HomeItemList category={"women's clothing"} />
-      <HomeItemList category={"jewelery"} />
-      <HomeItemList category={"electronics"} />
+      {location.pathname === "/" ? <Home /> : <Outlet />}
     </StyledRoot>
   );
 }
 
 export default Root;
 
-const StyledRoot = styled.div`
-  
-`
+const StyledRoot = styled.div``;

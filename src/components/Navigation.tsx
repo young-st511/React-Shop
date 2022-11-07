@@ -34,8 +34,8 @@ function Navigation() {
           <Link to={"/"}>React Shop</Link>
         </h1>
         <Nav>
-          <NavLink to={"fasion"}>패션</NavLink>
-          <NavLink to={"accesory"}>악세서리</NavLink>
+          <NavLink to={"fashion"}>패션</NavLink>
+          <NavLink to={"accessory"}>악세서리</NavLink>
           <NavLink to={"digital"}>디지털</NavLink>
         </Nav>
 
@@ -127,6 +127,6 @@ const HeaderRight = styled.div`
 
 const BlankBlock = styled.div`
   width: 100%;
-  height: 48px;
+  height: 64px;
   background-color: #fff;
 `;

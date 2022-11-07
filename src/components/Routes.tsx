@@ -28,7 +28,7 @@ function AppRouter() {
           element: <Digital />,
         },
         {
-          path: "product",
+          path: "product/:id",
           element: <Product />,
         },
         {

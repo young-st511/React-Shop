@@ -1,18 +1,21 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ItemType } from "../types/itemType";
 
 function Item({ item }: { item: ItemType }) {
   return (
     <StyledItem>
-      <div className="img-area">
-        <img src={item.image} />
-      </div>
-      <div className="info-area">
-        <div>
-          <h3>{item.title}</h3>
-          <span className="price">$ {item.price}</span>
+      <Link to={`product/${item.id}`}>
+        <div className="img-area">
+          <img src={item.image} />
         </div>
-      </div>
+        <div className="info-area">
+          <div>
+            <h3>{item.title}</h3>
+            <span className="price">$ {item.price}</span>
+          </div>
+        </div>
+      </Link>
     </StyledItem>
   );
 }
