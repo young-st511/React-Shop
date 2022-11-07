@@ -1,5 +1,5 @@
 import { atom, AtomEffect, selector } from "recoil";
-import { CartType } from "./types/CartType";
+import { CartType } from "./types/cartType";
 
 const localSyncEffect: <T>(key: string) => AtomEffect<T> =
   (key) =>
