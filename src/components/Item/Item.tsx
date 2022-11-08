@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ItemType } from "../types/itemType";
+import { ItemType } from "../../types/itemType";
 import StyledItem from "./StyledItem.style";
 
 function Item({ item }: { item: ItemType }) {

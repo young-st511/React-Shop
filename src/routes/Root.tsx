@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Home from "../components/Home/Home";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/Navigation/Navigation";
 
 function Root() {
   const location = useLocation();
@@ -23,7 +23,6 @@ function Root() {
 export default Root;
 
 const StyledRoot = styled.div`
-  margin: 10px auto;
   .router-outlet {
     margin: 0 auto;
     max-width: 1360px;

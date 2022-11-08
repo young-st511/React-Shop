@@ -31,10 +31,9 @@ function Cart() {
           <span className="total-price">
             총 : ${" "}
             {cartList
-              ? `${cartList.reduce(
-                  (sum, item) => item.price * item.number + sum,
-                  0
-                )}`
+              ? `${cartList
+                  .reduce((sum, item) => item.price * item.number + sum, 0)
+                  .toFixed(2)}`
               : 0}
           </span>
           <Button onClick={handlePurchaseClick}>구매하기</Button>
@@ -53,8 +52,6 @@ const StyledCart = styled.div`
   margin-top: 3.5rem;
   margin-bottom: 5rem;
 
-  .items-area {
-  }
   .cart-button-area {
     display: flex;
     justify-content: space-evenly;

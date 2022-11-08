@@ -1,5 +1,5 @@
 import CarouselSection from "./CarouselSection";
-import ItemList from "../ItemList";
+import ItemList from "../Item/ItemList";
 import styled from "styled-components";
 
 function Home() {

@@ -1,15 +1,6 @@
 import styled from "styled-components";
 
 const StyledCarouselSection = styled.div`
-  /********************************************
-	BREAKPOINT WIDTHS
-  ********************************************/
-  /********************************************
-	FONTS
-  ********************************************/
-  /********************************************
-	COLOURS
-  ********************************************/
   .carousel .control-arrow,
   .carousel.carousel-slider .control-arrow {
     -webkit-transition: all 0.25s ease-in;
@@ -40,6 +31,9 @@ const StyledCarouselSection = styled.div`
 
     .carousel-item {
       height: 700px;
+      * {
+        background: none;
+      }
 
       img {
         height: 700px;

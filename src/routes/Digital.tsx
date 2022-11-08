@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ItemList from "../components/ItemList";
+import ItemList from "../components/Item/ItemList";
 import StyledWrapper from "../components/MiniNav.styled";
 
 function Digital() {

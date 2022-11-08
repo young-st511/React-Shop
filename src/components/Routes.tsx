@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import { useRecoilValue } from "recoil";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import reset from "styled-reset";
+import { themeState } from "../recoil_state";
 import Accessory from "../routes/Accessory";
 import Cart from "../routes/Cart";
 import Digital from "../routes/Digital";
@@ -10,6 +12,7 @@ import Root from "../routes/Root";
 import Footer from "./Footer";
 
 function AppRouter() {
+  const allTheme = useRecoilValue(themeState);
   const router = createBrowserRouter([
     {
       path: "/",
@@ -39,10 +42,19 @@ function AppRouter() {
     },
   ]);
 
+  const styleTheme = {
+    theme: {
+      bgColor: allTheme === "light" ? "#ffffff" : "#363636",
+      fontColor: allTheme === "light" ? "#000000" : "#e6e6e6",
+    },
+  };
+
   return (
     <div className="App">
       <GlobalStyle />
-      <RouterProvider router={router} />
+      <ThemeProvider theme={styleTheme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
       <Footer />
     </div>
   );
@@ -56,14 +68,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: SUIT;
     font-weight: 500;
 
+    margin: 0;
+
     transition: all 0.3s ease-in-out;
     a, button {
       color: inherit;
       text-decoration: none;
-    }
-  }
-  body {
-    margin: 0;
-    align-items: center;
-  }
+    }}
+
 `;

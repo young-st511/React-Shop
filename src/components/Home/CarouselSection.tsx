@@ -10,6 +10,7 @@ function CarouselSection() {
     <StyledCarouselSection>
       <Carousel
         showThumbs={false}
+        showStatus={false}
         infiniteLoop={true}
         autoPlay={true}
         interval={3000}>

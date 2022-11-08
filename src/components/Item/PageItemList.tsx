@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { CategoryType } from "../types/categoryType";
-import { ItemType } from "../types/itemType";
-import getListName from "../utils/getListName";
+import { CategoryType } from "../../types/categoryType";
+import { ItemType } from "../../types/itemType";
+import getListName from "../../utils/getListName";
 import Item from "./Item";
 
 const fetch = async (category: CategoryType) => {
