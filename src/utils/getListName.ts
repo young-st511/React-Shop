@@ -16,4 +16,19 @@ const getListName = (category: CategoryType) => {
   }
 };
 
+export const getListPath = (category: CategoryType) => {
+  switch (category) {
+    case "men's clothing":
+    case "women's clothing":
+      return "/fashion";
+    case "electronics":
+      return "/digital";
+    case "jewelery":
+      return "/accessory";
+
+    default:
+      return "error";
+  }
+};
+
 export default getListName;

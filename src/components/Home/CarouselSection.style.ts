@@ -67,7 +67,10 @@ const StyledCarouselSection = styled.div`
           padding: 12px 16px;
           height: 46px;
           background-color: #363636;
+          border-radius: 0.7rem;
 
+          font-size: 16px;
+          font-weight: 800;
           color: white;
           font-style: normal;
         }

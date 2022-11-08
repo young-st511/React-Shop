@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import ItemList from "../components/ItemList";
-import { StyledWrapper } from "../components/ItemPageList.styled";
+import StyledWrapper from "../components/MiniNav.styled";
 
 function Fashion() {
   return (
@@ -17,4 +17,3 @@ function Fashion() {
 }
 
 export default Fashion;
-

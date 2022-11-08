@@ -30,37 +30,39 @@ function Navigation() {
   return (
     <>
       <HeaderWrapper>
-        <h1>
-          <Link to={"/"}>React Shop</Link>
-        </h1>
-        <Nav>
-          <NavLink to={"fashion"}>패션</NavLink>
-          <NavLink to={"accessory"}>악세서리</NavLink>
-          <NavLink to={"digital"}>디지털</NavLink>
-        </Nav>
+        <div className="header-container">
+          <h1>
+            <Link to={"/"}>React Shop</Link>
+          </h1>
+          <Nav>
+            <NavLink to={"fashion"}>패션</NavLink>
+            <NavLink to={"accessory"}>악세서리</NavLink>
+            <NavLink to={"digital"}>디지털</NavLink>
+          </Nav>
 
-        <HeaderRight>
-          <button
-            className="theme-button"
-            aria-hidden={"true"}
-            onClick={handleThemeClick}>
-            {theme === "light" ? (
-              <img src={sunImg} alt="라이트 모드" />
-            ) : (
-              <img src={moonImg} alt="다크 모드" />
-            )}
-          </button>
-          <input
-            type={"search"}
-            placeholder="검색"
-            id="검색창"
-            value={search}
-            onChange={handleChangeSearch}
-          />
-          <Link className="cart-button" to={"cart"}>
-            <img src={cartImg} alt="장바구니" />
-          </Link>
-        </HeaderRight>
+          <HeaderRight>
+            <button
+              className="theme-button"
+              aria-hidden={"true"}
+              onClick={handleThemeClick}>
+              {theme === "light" ? (
+                <img src={sunImg} alt="라이트 모드" />
+              ) : (
+                <img src={moonImg} alt="다크 모드" />
+              )}
+            </button>
+            <input
+              type={"search"}
+              placeholder="검색"
+              id="검색창"
+              value={search}
+              onChange={handleChangeSearch}
+            />
+            <Link className="cart-button" to={"cart"}>
+              <img src={cartImg} alt="장바구니" />
+            </Link>
+          </HeaderRight>
+        </div>
       </HeaderWrapper>
       <BlankBlock />
     </>
@@ -74,22 +76,29 @@ const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   width: 100%;
   height: 48px;
   padding: 8px;
 
-  align-items: center;
+  .header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1360px;
 
-  background-color: #fff;
+    margin: 0 auto;
+    background-color: #fff;
 
-  z-index: 9999;
+    z-index: 9999;
 
-  h1 {
-    flex: none;
-    margin: 0 10px;
-    font-size: 18px;
-    font-weight: 700;
+    h1 {
+      flex: none;
+      margin: 0 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
   }
 `;
 

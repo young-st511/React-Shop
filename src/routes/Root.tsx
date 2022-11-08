@@ -9,11 +9,23 @@ function Root() {
   return (
     <StyledRoot>
       <Navigation />
-      {location.pathname === "/" ? <Home /> : <Outlet />}
+      {location.pathname === "/" ? (
+        <Home />
+      ) : (
+        <div className="router-outlet">
+          <Outlet />
+        </div>
+      )}
     </StyledRoot>
   );
 }
 
 export default Root;
 
-const StyledRoot = styled.div``;
+const StyledRoot = styled.div`
+  margin: 10px auto;
+  .router-outlet {
+    margin: 0 auto;
+    max-width: 1360px;
+  }
+`;

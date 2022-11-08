@@ -5,6 +5,10 @@ import { ItemType } from "../types/itemType";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { cartListState } from "../recoil_state";
+import { StyledMiniNav } from "../components/MiniNav.styled";
+import { Link } from "react-router-dom";
+import getListName, { getListPath } from "../utils/getListName";
+import Button from "../components/Button.Style";
 
 const fetchItem = async (itemId: number) => {
   try {
@@ -43,6 +47,7 @@ function Product() {
         ...cartList,
         [itemId]: {
           id: item.id,
+          title: item.title,
           image: item.image,
           price: item.price,
           number: 1,
@@ -53,16 +58,25 @@ function Product() {
 
   return (
     <StyledItem>
-      <div className="img">
-        <img src={item.image} />
-      </div>
-      <div className="info">
-        <h2>{item.title}</h2>
-        <p>{item.description}</p>
-        <span className="price">$ {item.price}</span>
-        <div className="button-container">
-          <Button onClick={handleAddClick}>장바구니에 담기</Button>
-          <Button className="move">장바구니로 이동</Button>
+      <StyledMiniNav>
+        <Link to="/">홈</Link>
+        <span>{" > "}</span>
+        <Link to={getListPath(item.category)}>
+          {getListName(item.category)}
+        </Link>
+      </StyledMiniNav>
+      <div className="item-container">
+        <div className="img">
+          <img src={item.image} />
+        </div>
+        <div className="info">
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
+          <span className="price">$ {item.price}</span>
+          <div className="button-container">
+            <Button onClick={handleAddClick}>장바구니에 담기</Button>
+            <Button className="reversal">장바구니로 이동</Button>
+          </div>
         </div>
       </div>
     </StyledItem>
@@ -71,87 +85,56 @@ function Product() {
 
 export default Product;
 
-const Button = styled.button`
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-  height: 3rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
-  font-size: 0.875rem;
-  line-height: 1em;
-  font-weight: 600;
-
-  border-radius: 0.5rem;
-
-  background-color: #000000;
-  border: 1px solid #000;
-  color: #ffffff;
-
-  &:hover {
-    background-color: #464646;
-  }
-
-  &.move {
-    background-color: #fff;
-    border-color: #e6e6e6;
-    color: #000;
-    &:hover {
-      background-color: #e6e6e6;
-    }
-  }
-`;
-
 const StyledItem = styled.div`
-  display: flex;
-  align-items: center;
-
-  margin-top: 3.5rem;
-  .img {
-    padding: 1rem;
-    img {
-      height: 18rem;
-    }
-  }
-
-  .info {
-    padding: 0 3rem;
+  .item-container {
     display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: 2rem;
-    gap: 0.5rem;
+    align-items: center;
 
-    h2 {
+    margin: 3.5rem 1rem;
+
+    .img {
+      padding: 1rem;
+      img {
+        height: 18rem;
+      }
+    }
+
+    .info {
+      padding: 0 3rem;
       display: flex;
-      align-items: center;
+      flex: 1 1 auto;
+      flex-direction: column;
+      padding: 2rem;
       gap: 0.5rem;
 
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.75rem;
-    }
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
 
-    p {
-      flex-grow: 1;
-      font-size: 16px;
-      font-weight: 500;
-    }
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.75rem;
+      }
 
-    .price {
-      margin: 1rem 0;
+      p {
+        flex-grow: 1;
+        font-size: 16px;
+        font-weight: 500;
+      }
 
-      font-size: 30px;
-    }
+      .price {
+        margin: 1rem 0;
 
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 0.5rem;
+        font-size: 30px;
+      }
+
+      .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
     }
   }
 `;
