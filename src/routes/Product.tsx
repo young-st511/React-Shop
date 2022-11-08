@@ -75,7 +75,9 @@ function Product() {
           <span className="price">$ {item.price}</span>
           <div className="button-container">
             <Button onClick={handleAddClick}>장바구니에 담기</Button>
-            <Button className="reversal">장바구니로 이동</Button>
+            <Link to={"/cart"}>
+              <Button className="reversal">장바구니로 이동</Button>
+            </Link>
           </div>
         </div>
       </div>

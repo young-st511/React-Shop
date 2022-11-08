@@ -11,23 +11,40 @@ function CartItem({ item }: { item: CartItemType }) {
   const handleAddClick = () => {
     const itemNumber = cartList[item.id].number;
 
-    setCartList({ ...CartItem, [item.id]: itemNumber + 1 });
+    setCartList({
+      ...cartList,
+      [item.id]: { ...cartList[item.id], number: itemNumber + 1 },
+    });
   };
 
   const handleSubClick = () => {
     const itemNumber = cartList[item.id].number;
 
-    setCartList({ ...CartItem, [item.id]: { number: itemNumber - 1 } });
+    if (itemNumber <= 1) {
+      const newList = { ...cartList };
+      delete newList[item.id];
+
+      setCartList({ ...newList });
+    } else {
+      setCartList({
+        ...cartList,
+        [item.id]: { ...cartList[item.id], number: itemNumber - 1 },
+      });
+    }
   };
 
   return (
     <>
       <StyledCartItem>
-        <div className="img">
-          <img src={item.image} />
-        </div>
+        <Link to={`/product/${item.id}`}>
+          <div className="img">
+            <img src={item.image} />
+          </div>
+        </Link>
         <div className="info">
-          <h2>{item.title}</h2>
+          <Link to={`/product/${item.id}`}>
+            <h2>{item.title}</h2>
+          </Link>
           <p className="price">$ {item.price}</p>
           <div className="item-button">
             <CartButton onClick={handleSubClick} className="sub">

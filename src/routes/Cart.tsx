@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilValue, useResetRecoilState } from "recoil";
 import styled from "styled-components";
 import Button from "../components/Button.Style";
 import CartItem from "../components/Cart/CartItem";
