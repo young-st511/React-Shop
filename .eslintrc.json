@@ -12,13 +12,13 @@
   },
   "plugins": ["react", "react-hooks", "prettier"],
   "rules": {
-    // "no-console": "off",
+    "no-console": "warn",
     "no-unused-vars": "warn",
     "no-unreachable": "warn",
     "strict": ["error", "global"],
     "curly": "warn",
 
-    // "prettier/prettier": "warn",
+    "prettier/prettier": "warn",
 
     /* React Options */
     "react/jsx-uses-react": "off",

@@ -13,6 +13,8 @@ export const StyledItem = styled.div`
 
     .img {
       padding: 1rem;
+      background-color: #ffffff;
+      border-radius: 1rem;
       img {
         height: 18rem;
       }

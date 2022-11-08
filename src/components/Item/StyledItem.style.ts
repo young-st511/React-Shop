@@ -13,6 +13,8 @@ export const StyledItem = styled.div`
     justify-content: center;
     align-items: center;
 
+    background-color: #fff;
+
     height: 320px;
 
     img {
@@ -31,6 +33,7 @@ export const StyledItem = styled.div`
     padding: 32px;
     box-sizing: border-box;
 
+    color: #000000;
     background-color: #e6e6e6;
 
     h3 {

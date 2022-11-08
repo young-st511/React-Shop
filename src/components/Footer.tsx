@@ -23,7 +23,6 @@ export default Footer;
 
 const StyledFooter = styled.footer`
   height: 300px;
-  margin-top: 200px;
 
   text-align: center;
   font-size: 14px;

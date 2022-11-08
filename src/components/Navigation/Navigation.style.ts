@@ -1,11 +1,18 @@
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import { themeState } from "../../recoil_state";
 
 const HeaderWrapper = styled.header`
   display: flex;
   position: fixed;
+
+  align-items: center;
+
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.theme.bgColor};
+  color: ${({ theme }) => theme.theme.fontColor};
+
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
   width: 100%;
@@ -21,7 +28,6 @@ const HeaderWrapper = styled.header`
     max-width: 1360px;
 
     margin: 0 auto;
-    background-color: #fff;
 
     z-index: 9999;
 
@@ -71,7 +77,8 @@ const HeaderRight = styled.div`
 
     cursor: pointer;
 
-    background: none;
+    background: ${() =>
+      useRecoilValue(themeState) === "dark" ? "#a6a6a6" : "none"};
     border: none;
 
     &:hover {
@@ -124,18 +131,26 @@ const HeaderRight = styled.div`
     width: 3rem;
     height: 3rem;
     min-height: 3rem;
+    box-sizing: border-box;
+    border-radius: 0.3rem;
 
-    margin-left: 0.5rem;
-    padding: 0 1rem;
+    margin: 0 1rem;
 
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1em;
 
+    background: ${() =>
+      useRecoilValue(themeState) === "dark" ? "#a6a6a6" : "none"};
+
+    &:hover {
+      background-color: #e6e6e6;
+    }
+
     img {
       width: 2rem;
       height: 2rem;
-      transform: translateY(2px);
+      transform: translateY(3px);
     }
 
     .cart-number {
@@ -160,7 +175,7 @@ const HeaderRight = styled.div`
 const BlankBlock = styled.div`
   width: 100%;
   height: 64px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.theme.bgColor};
 `;
 
 export { BlankBlock, HeaderRight, HeaderWrapper, Nav };

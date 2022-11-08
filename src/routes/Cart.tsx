@@ -52,6 +52,9 @@ const StyledCart = styled.div`
   margin-top: 3.5rem;
   margin-bottom: 5rem;
 
+  background-color: ${({ theme }) => theme.theme.bgColor};
+  color: ${({ theme }) => theme.theme.fontColor};
+
   .cart-button-area {
     display: flex;
     justify-content: space-evenly;

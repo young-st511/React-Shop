@@ -3,13 +3,10 @@ import { CartItemType, CartType } from "./types/cartType";
 
 const localSyncEffect: <T>(key: string) => AtomEffect<T> =
   (key) =>
-  ({ setSelf, onSet, storeID, node, trigger }) => {
+  ({ setSelf, onSet }) => {
     const savedValue = localStorage.getItem(key);
 
     if (savedValue != null) {
-      //! TEST
-      console.log("local init!", storeID, "node", node, "trigger", trigger);
-      ////
       setSelf(JSON.parse(savedValue));
     }
 

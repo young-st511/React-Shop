@@ -23,6 +23,12 @@ function Root() {
 export default Root;
 
 const StyledRoot = styled.div`
+  min-height: 1000px;
+  padding-bottom: 200px;
+
+  background-color: ${({ theme }) => theme.theme.bgColor};
+  color: ${({ theme }) => theme.theme.fontColor};
+
   .router-outlet {
     margin: 0 auto;
     max-width: 1360px;

@@ -49,6 +49,7 @@ const StyledHomeItemList = styled.section`
     width: 200px;
     margin: 70px auto;
 
+    text-align: center;
     font-size: 36px;
     font-weight: 700;
   }
